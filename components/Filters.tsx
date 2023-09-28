@@ -1,5 +1,7 @@
 'use client';
 
+import { formUrlQuery } from '@/sanity/utils';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 interface FiltersProps {}
@@ -7,14 +9,29 @@ interface FiltersProps {}
 const links = ['all', 'Next 13', 'frontend', 'backend', 'fullstack'];
 function Filters({}: FiltersProps) {
   const [active, setActive] = useState('');
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
-  /**
-   * Handles the filter by setting the active link.
-   *
-   * @param {string} link - The link to set as active.
-   */
   const handleFilter = (link: string) => {
-    setActive(link);
+    let newUrl = '';
+
+    if (active === link) {
+      setActive('');
+      newUrl = formUrlQuery({
+        params: searchParams.toString(),
+        key: 'category',
+        value: null,
+      });
+    } else {
+      setActive(link);
+      newUrl = formUrlQuery({
+        params: searchParams.toString(),
+        key: 'category',
+        value: link.toLowerCase(),
+      });
+    }
+
+    router.push(newUrl, { scroll: false });
   };
 
   return (
