@@ -5,7 +5,7 @@ interface NavbarProps {}
 
 function Navbar({}: NavbarProps) {
   return (
-    <nav className='fixed top-0 flex-center z-50 w-full border-b-2 border-black-200 py-7 text-white'>
+    <nav className='fixed top-0 flex-center z-50 w-full border-b-2 border-black-200 bg-black-100 py-7 text-white'>
       <div className='flex-between mx-auto max-w-screen-2xl w-full px-6 xs:px-8 sm:px-16'>
         {/* Logo */}
         <Link href='/'>
