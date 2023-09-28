@@ -1,10 +1,9 @@
 interface HeaderProps {
-  type: string;
   query: string;
   category: string;
 }
 
-function Header({ type, query, category }: HeaderProps) {
+function Header({ query, category }: HeaderProps) {
   if (query && category) {
     return (
       <h1 className='heading3 self-start text-white-800'>
