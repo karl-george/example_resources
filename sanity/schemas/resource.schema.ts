@@ -14,9 +14,7 @@ const schema = {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      options: {
-        source: 'title',
-      },
+      options: { source: 'title' },
     },
     {
       name: 'downloadLink',
